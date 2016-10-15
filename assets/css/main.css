@@ -1,0 +1,53 @@
+/*
+
+Color Schema
+============
+
+Yellow: 	#FFC857
+Green: 		#5FAD56
+Black: 		#000807
+White:		#FFF8E8
+Red:		#AD1318
+
+*/
+
+/* Global */
+
+html {
+  
+  height: 100%;
+}
+
+.content-area{
+
+	height: 1000px;
+	width: 100%;
+}
+
+/* Section 1 */
+
+#section-1{
+
+	background-color: #FFC857;
+}
+
+/* Section 2 */
+
+#section-2{
+
+	background-color: #FFF8E8;
+}
+
+/* Section 3 */
+
+#section-3{
+
+	background-color: #5FAD56;	
+}
+
+/* Section 4 */
+
+#section-4{
+
+	background-color: #AD1318;
+}
