@@ -1,14 +1,14 @@
 <html>
 <head>
 
-	<title>[Name] | [Description]</title>
+	<title>When you only need pen and paper. | Paper Pen</title>
 
 	<meta charset="utf-8" />
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-	<meta name="description" content="[Description]">
-	<meta name="author" content="[Author]">
+	<meta name="description" content="A simple Angular Todo application that is intended to be as simple as just using pen and paper.">
+	<meta name="author" content="Narc J. McDougall">
 
 	<!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="dependencies/bootstrap-3.3.5/css/bootstrap.min.css">
@@ -32,7 +32,7 @@
 </head>
 
 <!-- Notice the data-spy and data-target elements.  This is used to target the main navigation bar with scroll tracking.  The offset is the height of the navbar (50px).-->
-<body data-spy="scroll" data-target=".navbar" data-offset="50">
+<body ng-app="PaperPen">
 
 	<!-- This is the primary navigation bar for the web page. -->
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -78,9 +78,9 @@
 	</nav>
 
 	<!-- This is the "home" content area.  It is used to display some company blurb information, and the company logo.-->
-	<div id="section-1" class="content-area">
+	<div class="container" ng-controller="MainController">
 
-		
+		<h1>{{hello}}</h1>
 
 	</div>
 
