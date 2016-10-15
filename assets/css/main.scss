@@ -9,6 +9,19 @@
 	box-shadow: none;
 }
 
+%highlight-box{
+
+	border: 1px solid #eff2f7;
+	box-shadow: 1px 2px 12px 0px rgba(0,0,0,0.08);
+}
+
+//Mixins
+@mixin smooth-transition($duration){
+
+	-webkit-transition-duration: $duration; /* Safari */
+    transition-duration: $duration;
+}
+
 // Resets
 
 // This nukes the Bootstrap styling on the navigation menu itself and
@@ -21,7 +34,7 @@
 
 	@extend %transparent-background;
 
-	color: $black;
+	color: $white;
 
 	&:hover{
 
@@ -30,6 +43,13 @@
 }
 
 // Global
+*{
+	-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+     box-sizing: border-box;  
+}
+
+
 html {
   
   height: 100%;
@@ -37,9 +57,9 @@ html {
 
 body{
 
-	background-color: $white;
+	background-color: $black;
 
-	height: 200%;
+	padding-bottom: 100px;
 
 	font-family: 'Open Sans', sans-serif;
 
@@ -62,12 +82,28 @@ a{
 	}
 }
 
+.fancy-hr{
+
+	width: 50px;
+	height: 10px;
+
+	margin: 0px;
+	margin-bottom: 25px;
+
+	background-color: $primary;
+}
+
 // Navigation Bar
 .navbar{
 
 	@extend %transparent-background;
 
 	border: 0px;
+
+	.container{
+
+		width: 810px;
+	}
 
 	#nav-container{
 
@@ -80,7 +116,7 @@ a{
 
 	.navbar-brand{
 
-		color: $black;
+		color: $white;
 		font-size: 2.0em;
 
 		&:hover{
@@ -103,18 +139,88 @@ a{
 #wrapper{
 
 	// All the content on the page should be pushed below the naviagation bar.
-	margin-top: $navigation-height;
+	margin-top: $navigation-height/2;
 }
 
 // Note Content
-.note{
+.notes-wrapper{
 
-	p{
+	background: $white;
+	padding: 25px;
 
-		margin-bottom: 20px;
+	border-radius: 5px;
 
-		font-size: 1.1em;
-		// font-size: 15px;
-		// line-height: 20px;
+	.title{
+
+		text-transform: uppercase;
+		margin-top: 0px;
+	}
+
+	.note-group{
+
+		margin-bottom: 50px;
+
+		// background: white;
+
+		&:last-child{
+
+			margin-bottom: 0px;
+		}
+
+		.note{
+
+			margin-bottom: 20px;		
+			padding: 15px;
+
+			// min-height: 100px;
+			// height: auto;
+
+			position: relative;
+			
+			@extend %highlight-box;
+			// @include smooth-transition(0.5s);
+
+			input[type="text"]{			
+
+				font-size: 1.1em;
+				margin: 0px;
+
+				max-width: 90%;
+				width: 100%;
+				// width: 100%;
+				padding: 5px;
+
+				border: 0px;
+
+				display: inline-block;
+			}
+
+			a{
+
+				position: absolute;
+				right: 15px;
+				top: 18px;
+
+				color: $gray;
+				font-size: 1.5em;
+				opacity: 0.6;
+
+				@include smooth-transition(0.5s);
+
+				i{
+
+					margin-right: 0px;
+				}
+
+				&:hover{
+
+					color: $primary;
+					opacity: 1.0;
+				}
+			}
+
+		}
+
+
 	}
 }

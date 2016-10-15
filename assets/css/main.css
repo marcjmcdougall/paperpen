@@ -8,12 +8,17 @@
   box-shadow: none;
 }
 
+.notes-wrapper .note-group .note {
+  border: 1px solid #eff2f7;
+  box-shadow: 1px 2px 12px 0px rgba(0, 0, 0, 0.08);
+}
+
 .navbar-inverse .navbar-nav > .active > a,
 .navbar-inverse .navbar-nav > li > a,
 .navbar-inverse .navbar-nav > a:hover,
 .navbar-inverse .navbar-nav > .active > a:hover,
 .navbar-inverse .navbar-nav > .active > a:focus {
-  color: #393D3F;
+  color: #FFFFFF;
 }
 
 .navbar-inverse .navbar-nav > .active > a:hover,
@@ -24,13 +29,19 @@
   color: #5887FF;
 }
 
+* {
+  /* Safari/Chrome, other WebKit */
+  /* Firefox, other Gecko */
+  box-sizing: border-box;
+}
+
 html {
   height: 100%;
 }
 
 body {
-  background-color: #F4FAFF;
-  height: 200%;
+  background-color: #393D3F;
+  padding-bottom: 100px;
   font-family: 'Open Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizelegibility;
@@ -44,8 +55,20 @@ a i {
   margin-right: 10px;
 }
 
+.fancy-hr {
+  width: 50px;
+  height: 10px;
+  margin: 0px;
+  margin-bottom: 25px;
+  background-color: #5887FF;
+}
+
 .navbar {
   border: 0px;
+}
+
+.navbar .container {
+  width: 810px;
 }
 
 .navbar #nav-container {
@@ -66,7 +89,7 @@ a i {
 }
 
 .navbar .navbar-brand {
-  color: #393D3F;
+  color: #FFFFFF;
   font-size: 2.0em;
 }
 
@@ -81,10 +104,61 @@ a i {
 }
 
 #wrapper {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
-.note p {
+.notes-wrapper {
+  background: #FFFFFF;
+  padding: 25px;
+  border-radius: 5px;
+}
+
+.notes-wrapper .title {
+  text-transform: uppercase;
+  margin-top: 0px;
+}
+
+.notes-wrapper .note-group {
+  margin-bottom: 50px;
+}
+
+.notes-wrapper .note-group:last-child {
+  margin-bottom: 0px;
+}
+
+.notes-wrapper .note-group .note {
   margin-bottom: 20px;
+  padding: 15px;
+  position: relative;
+}
+
+.notes-wrapper .note-group .note input[type="text"] {
   font-size: 1.1em;
+  margin: 0px;
+  max-width: 90%;
+  width: 100%;
+  padding: 5px;
+  border: 0px;
+  display: inline-block;
+}
+
+.notes-wrapper .note-group .note a {
+  position: absolute;
+  right: 15px;
+  top: 18px;
+  color: #7F7F7F;
+  font-size: 1.5em;
+  opacity: 0.6;
+  -webkit-transition-duration: 0.5s;
+  /* Safari */
+  transition-duration: 0.5s;
+}
+
+.notes-wrapper .note-group .note a i {
+  margin-right: 0px;
+}
+
+.notes-wrapper .note-group .note a:hover {
+  color: #5887FF;
+  opacity: 1.0;
 }
