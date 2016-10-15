@@ -9,3 +9,7 @@ body {
 #wrapper {
   margin-top: 40px;
 }
+
+#nav-main {
+  height: 100px;
+}
