@@ -15,7 +15,10 @@
 	<link rel="stylesheet" href="dependencies/bootstrap-3.3.5//css/bootstrap-theme.min.css">
 
 	<!-- The font used on the site -->
-	<link href='https://fonts.googleapis.com/css?family=Roboto:400,700,400italic' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Oswald:400,700" rel="stylesheet">
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="dependencies/font-awesome/css/font-awesome.min.css">
 
 	<!-- The favicon for the browser header.  Uncomment this when ready. -->
 	<!-- <link rel="shortcut icon" href="./assets/images/favicon.png"> -->
@@ -35,41 +38,44 @@
 <body ng-app="PaperPen">
 
 	<!-- This is the primary navigation bar for the web page. -->
-	<nav class="navbar navbar-inverse navbar-fixed-top">
+	<nav class="navbar navbar-inverse navbar-fixed-top" ng-controller="NavController">
 
 		<!-- This container is used to pad the content on the page and support responsive functionality. -->
 		<div id="nav-container" class="container">
 
-			<!-- This is the header for the navigation bar: Includes the brand name (and image), and the collapsed orientation of the bar. -->
-		    <div class="navbar-header">
-		      
-		      <!-- This is the code that generates the 3 horizontal bars visible on mobile. -->
-	      		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-main" aria-expanded="false">
-		        
-			      	<!-- Note: Any time you see "sr-only", the subsequent code is intended for screen readers. -->
-			        <span class="sr-only">Toggle Navigation</span>
-			        <span class="icon-bar"></span>
-			        <span class="icon-bar"></span>
-			        <span class="icon-bar"></span>
-		      	</button>
+			<!-- This div exists so we can use flexbox to center the navigation elements vertically -->
+			<div>
 
-		      <!-- Modify this to change the brand text visible on the navigation bar. -->
-		      <a class="navbar-brand scrollLink" href="#section-1">[Title]</a>
+				<!-- This is the header for the navigation bar: Includes the brand name (and image), and the collapsed orientation of the bar. -->
+			    <div class="navbar-header">
+			      
+			      <!-- This is the code that generates the 3 horizontal bars visible on mobile. -->
+		      		<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#nav-main" aria-expanded="false">
+			        
+				      	<!-- Note: Any time you see "sr-only", the subsequent code is intended for screen readers. -->
+				        <span class="sr-only">Toggle Navigation</span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+				        <span class="icon-bar"></span>
+			      	</button>
 
-		    </div>
+			      <!-- Modify this to change the brand text visible on the navigation bar. -->
+			      <a class="navbar-brand scrollLink" href="#"><i class="fa fa-sticky-note-o"></i>Paper Pen</a>
 
-		    <!-- Collect the nav links, forms, and other content for toggling -->
-		    <div id="nav-main" class="collapse navbar-collapse">
-		      
-		      <!-- This unordered list contains all the links on the navigation bar. Modify them to change their text. -->
-      			<ul class="nav navbar-nav navbar-right" role="navigation">
+			    </div>
 
-			        <li class="active"><a class="scrollLink" href="#section-1">Section 1</a></li>
-			        <li><a class="scrollLink" href="#section-2">Section 2</a></li>
-			        <li><a class="scrollLink" href="#section-3">Section 3</a></li>
-			        <li><a class="scrollLink" href="#section-4">Section 4</a></li>
-			   
-		      	</ul>
+			    <!-- Collect the nav links, forms, and other content for toggling -->
+			    <div id="nav-main" class="collapse navbar-collapse">
+			      
+			      <!-- This unordered list contains all the links on the navigation bar. Modify them to change their text. -->
+	      			<ul class="nav navbar-nav navbar-right" role="navigation">
+
+				        <li class="active"><a href="#">Home</a></li>
+				        <li><a href="#">My Notes</a></li>
+
+			      	</ul>
+
+			    </div>
 
 		    </div>
 
@@ -80,29 +86,19 @@
 	<!-- This is the "home" content area.  It is used to display some company blurb information, and the company logo.-->
 	<div id="wrapper" class="container" ng-controller="MainController">
 
-		<h1>{{hello}}</h1>
+		<div class="row">
 
-	</div>
+			<div class="col-md-6 col-md-offset-3">
 
+				<div class="note" ng-repeat="note in notes">
 
-	<!-- This is the "about" content area.  It is used to display some company blurb information, and the company logo.-->
-	<div id="section-2" class="content-area">
+					<p>{{note.content}}</p>
 
-		
+				</div>
 
-	</div>
+			</div>
 
-	<!-- This is the "section-3" content area.  It is used to display some company blurb information, and the company logo.-->
-	<div id="section-3" class="content-area">
-
-		
-
-	</div>
-
-	<!-- This is the "section-4" content area.  It is used to display some company blurb information, and the company logo.-->
-	<div id="section-4" class="content-area">
-
-		
+		</div>
 
 	</div>
 
@@ -120,6 +116,7 @@
 
   	<!-- These are the Angular dependencies -->
   	<script type="text/javascript" src="assets/js/controllers/mainController.js"></script>
+  	<script type="text/javascript" src="assets/js/controllers/navController.js"></script>
 
 </body>
 </html>

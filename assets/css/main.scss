@@ -1,3 +1,35 @@
+// Variables
+@import 'components/variables';
+
+// Placeholders
+%transparent-background{
+
+	background-color: transparent;
+	background-image: none;
+	box-shadow: none;
+}
+
+// Resets
+
+// This nukes the Bootstrap styling on the navigation menu itself and
+// let's us control the colors.
+.navbar-inverse .navbar-nav>.active>a,
+.navbar-inverse .navbar-nav>li>a, 
+.navbar-inverse .navbar-nav>a:hover,
+.navbar-inverse .navbar-nav>.active>a:hover,
+.navbar-inverse .navbar-nav>.active>a:focus{
+
+	@extend %transparent-background;
+
+	color: $black;
+
+	&:hover{
+
+		color: $primary;
+	}
+}
+
+// Global
 html {
   
   height: 100%;
@@ -5,16 +37,84 @@ html {
 
 body{
 
-	background-color: red;
+	background-color: $white;
+
+	height: 200%;
+
+	font-family: 'Open Sans', sans-serif;
+
+	// Sexy text
+	-webkit-font-smoothing:antialiased;
+	text-rendering:optimizelegibility;
 }
 
-#wrapper{
+.title{
 
-	margin-top:40px;
+	font-family: 'Oswald', sans-serif;
+	// text-transform: uppercase;
+}
+
+a{
+
+	i{
+
+		margin-right: 10px;
+	}
 }
 
 // Navigation Bar
-#nav-main{
+.navbar{
 
-	height: 100px;
+	@extend %transparent-background;
+
+	border: 0px;
+
+	#nav-container{
+
+		height: $navigation-height;
+
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+
+	.navbar-brand{
+
+		color: $black;
+		font-size: 2.0em;
+
+		&:hover{
+
+			color: $primary;
+		}
+	}
+
+	a{
+
+		// Forcefully remove the text shadow on the navigation links.
+		text-shadow: none !important;
+
+		text-transform: uppercase;
+		font-weight: 700;
+	}
+}
+
+// Primary content
+#wrapper{
+
+	// All the content on the page should be pushed below the naviagation bar.
+	margin-top: $navigation-height;
+}
+
+// Note Content
+.note{
+
+	p{
+
+		margin-bottom: 20px;
+
+		font-size: 1.1em;
+		// font-size: 15px;
+		// line-height: 20px;
+	}
 }
