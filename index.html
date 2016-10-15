@@ -78,7 +78,7 @@
 	</nav>
 
 	<!-- This is the "home" content area.  It is used to display some company blurb information, and the company logo.-->
-	<div class="container" ng-controller="MainController">
+	<div id="wrapper" class="container" ng-controller="MainController">
 
 		<h1>{{hello}}</h1>
 
@@ -118,12 +118,8 @@
   	<!-- This is the primary javascript file for the site. -->
   	<script type="text/javascript" src="assets/js/app.js"></script>
 
-  	<!-- Any custom javascript can go here -->
-  	<script type="text/javascript">
-
-		  // Intentionally empty.
-
-	</script>
+  	<!-- These are the Angular dependencies -->
+  	<script type="text/javascript" src="assets/js/controllers/mainController.js"></script>
 
 </body>
 </html>
