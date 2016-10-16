@@ -1,48 +1,81 @@
 app.controller('MainController', ['$scope', function($scope) {
 
-	$scope.hello = 'Hello, everyone!';
+	// Init
+	if(window.localStorage['notes']){
 
-	$scope.notes = [
+		$scope.notes = angular.fromJson(window.localStorage['notes']);		
+	}
+	else{
 
-		{
+		$scope.notes = [];
+	}
 
-			'id' : '0',
-			'content' : 'This is my first note, see!',
-			'priority' : 1
-		},
+	$scope.tempNoteHigh  = {
 
-		{
+		'id' : '0',
+		'content' : '',
+		'priority' : 1
+	};
 
-			'id' : '0',
-			'content' : 'This is my second note, see!',
-			'priority' : 1
-		},
+	$scope.tempNoteMedium  = {
 
-		{
+		'id' : '0',
+		'content' : '',
+		'priority' : 2
+	};
 
-			'id' : '0',
-			'content' : 'This is my third note, see!',
-			'priority' : 1
-		},
+	$scope.tempNoteLow  = {
 
-		{
+		'id' : '0',
+		'content' : '',
+		'priority' : 3
+	};
 
-			'id' : '1',
-			'content' : 'Praesent ac massa at ligula laoreet iaculis.',
-			'priority' : 2
-		},
-		{
+	var save = function(){
 
-			'id' : '2',
-			'content' : 'Praesent ac massa at ligula laoreet iaculis.',
-			'priority' : 3
+		window.localStorage['notes'] = angular.toJson($scope.notes);
+	}
+
+	$scope.add = function(content, priority){
+
+		var newNote = {'id' : '0', 'content' : content, 'priority' : priority};
+
+		console.log('New Note: ' + newNote.content);
+
+		$scope.notes.push(newNote);
+
+		if(priority == 1){
+
+			console.log('Resetting priority 1 now.');
+
+			$scope.tempNoteHigh.content = '';
 		}
-	];
+		else if(priority == 2){
+
+			$scope.tempNoteMedium.content = '';
+		}
+		else if(priority == 3){
+
+			// $('#input-3').html('');
+			$scope.tempNoteLow.content = '';
+		}
+		else{
+
+			// Something went wrong.
+			console.log('Unknown priority value.');
+		}
+		
+		save();
+	}
 
 	$scope.remove = function(item){
 
 		var index = $scope.notes.indexOf(item);
   		$scope.notes.splice(index, 1); 
+
+  		save();
 	};
+
+	// console.log($scope.tempNoteLow);
 
 }]);
