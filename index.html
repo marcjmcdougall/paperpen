@@ -1,7 +1,7 @@
 <html>
 <head>
 
-	<title>Because you just need pen and paper. &mdash; Paper Pen</title>
+	<title>Paper Pen &mdash; For when you just need pen and paper.</title>
 
 	<meta charset="utf-8" />
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
@@ -96,22 +96,22 @@
 
 				<div class="note-group">
 
-					<div class="note" ng-repeat="note in notes | filter: {'note.priority' : 1}">
+					<div class="note" ng-repeat="note in notes | filter: {priority : 1}">
 
 						<!-- TODO -->
 						<!-- <p ng-show="notes.length < 1">No tasks. :)</p> -->
 
 						<input type="text" ng-model="note.content"></input>
 						<!-- <p>{{note.content}}</p> -->
-						<a href="#" ng-click="remove(note)"><i class="fa fa-check"></i></a>			
+						<a href="" ng-click="remove(note)"><i class="fa fa-check"></i></a>			
 
 					</div>
 
 					<div class="note">
 
-						<input type="text" ng-model="tempNoteTop.content"placeholder="Add new..." ></input>
+						<input type="text" ng-keydown="$event.which === 13 && add(tempNoteTop.content, 1)" ng-model="tempNoteTop.content"placeholder="Add new..." ></input>
 
-						<a href="" ng-click="add(tempNoteTop)"><i class="fa fa-plus"></i></a>
+						<a href="" ng-click="add(tempNoteTop.content, 1)"><i class="fa fa-plus"></i></a>
 
 					</div>
 
@@ -123,18 +123,18 @@
 
 				<div class="note-group">
 
-					<div class="note" ng-repeat="note in mediumNotes">
+					<div class="note" ng-repeat="note in notes | filter: {priority : 2}">
 
 						<input type="text" ng-model="note.content"></input>
-						<a href="#" ng-click="remove(note)"><i class="fa fa-check"></i></a>	
+						<a href="" ng-click="remove(note)"><i class="fa fa-check"></i></a>	
 
 					</div>
 
 					<div class="note">
 
-						<input id="tempNoteMedium" type="text" ng-model="$scope.tempNoteMedium.content" placeholder="Add new..." ></input>
+						<input ng-keydown="$event.which === 13 && add(tempNoteMedium.content, 2)" type="text" ng-model="tempNoteMedium.content" placeholder="Add new..." ></input>
 
-						<a href="" ng-click="add($scope.tempNoteMedium.content, 2)"><i class="fa fa-plus"></i></a>	
+						<a href="" ng-click="add(tempNoteMedium.content, 2)"><i class="fa fa-plus"></i></a>	
 
 					</div>
 
@@ -146,7 +146,7 @@
 
 				<div class="note-group">
 
-					<div class="note" ng-repeat="note in lowNotes">
+					<div class="note" ng-repeat="note in notes | filter: {priority : 3}">
 
 						<input type="text" ng-model="note.content"></input>
 						<a ng-click="remove(note)"><i class="fa fa-check"></i></a>	
@@ -155,9 +155,9 @@
 
 					<div class="note">
 
-						<input type="text" ng-model="tempNoteLow.content" placeholder="Add new..." ></input>
+						<input type="text" ng-keydown="$event.which === 13 && add(tempNoteLow.content, 3)" ng-model="tempNoteLow.content" placeholder="Add new..." ></input>
 
-						<a href="" ng-click="add($scope.tempNoteLow.content, 3)"><i class="fa fa-plus"></i></a>	
+						<a href="" ng-click="add(tempNoteLow.content, 3)"><i class="fa fa-plus"></i></a>	
 
 					</div>
 

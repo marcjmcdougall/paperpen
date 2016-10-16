@@ -20,7 +20,13 @@ app.service('notesService', function(){
 
 	this.remove = function(item){
 
-		self.notes.splice(notes.indexOf(item), 1);
+		self.notes.splice(self.notes.indexOf(item), 1);
+		save();
+	}
+
+	this.update = function(notes){
+
+		self.notes = notes;
 		save();
 	}
 
