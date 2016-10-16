@@ -1,14 +1,37 @@
 app.controller('MainController', ['$scope', function($scope) {
 
+	var init = function(){
+
+		if(window.localStorage['topNotes']){
+
+			$scope.topNotes = angular.fromJson(window.localStorage['topNotes']);		
+		}
+		else{
+
+			$scope.topNotes = [];
+		}
+
+		if(window.localStorage['mediumNotes']){
+
+			$scope.mediumNotes = angular.fromJson(window.localStorage['mediumNotes']);		
+		}
+		else{
+
+			$scope.mediumNotes = [];
+		}
+
+		if(window.localStorage['lowNotes']){
+
+			$scope.lowNotes = angular.fromJson(window.localStorage['lowNotes']);		
+		}
+		else{
+
+			$scope.lowNotes = [];
+		}
+	};
+
 	// Init
-	if(window.localStorage['notes']){
-
-		$scope.notes = angular.fromJson(window.localStorage['notes']);		
-	}
-	else{
-
-		$scope.notes = [];
-	}
+	init();
 
 	$scope.tempNoteHigh  = {
 
@@ -33,30 +56,34 @@ app.controller('MainController', ['$scope', function($scope) {
 
 	var save = function(){
 
-		window.localStorage['notes'] = angular.toJson($scope.notes);
+		window.localStorage['topNotes'] = angular.toJson($scope.topNotes);
+		window.localStorage['mediumNotes'] = angular.toJson($scope.mediumNotes);
+		window.localStorage['lowNotes'] = angular.toJson($scope.lowNotes);
 	}
 
 	$scope.add = function(content, priority){
 
 		var newNote = {'id' : '0', 'content' : content, 'priority' : priority};
 
-		console.log('New Note: ' + newNote.content);
-
-		$scope.notes.push(newNote);
+		console.log('New Note: ' + newNote.content);		
 
 		if(priority == 1){
 
-			console.log('Resetting priority 1 now.');
-
+			$scope.topNotes.push(newNote);
 			$scope.tempNoteHigh.content = '';
+			// $scope.$apply();
+
+			$('#tempNoteMedium').val('');
+
 		}
 		else if(priority == 2){
 
+			$scope.mediumNotes.push(newNote);
 			$scope.tempNoteMedium.content = '';
 		}
 		else if(priority == 3){
 
-			// $('#input-3').html('');
+			$scope.lowNotes.push(newNote);
 			$scope.tempNoteLow.content = '';
 		}
 		else{
@@ -70,12 +97,27 @@ app.controller('MainController', ['$scope', function($scope) {
 
 	$scope.remove = function(item){
 
-		var index = $scope.notes.indexOf(item);
-  		$scope.notes.splice(index, 1); 
+		if(item.priority == 1){
+
+			var index = $scope.topNotes.indexOf(item);
+  			$scope.topNotes.splice(index, 1); 
+		}
+		else if(item.priority == 2){
+
+			var index = $scope.mediumNotes.indexOf(item);
+  			$scope.mediumNotes.splice(index, 1); 
+		}
+		else if(item.priority == 3){
+
+			var index = $scope.lowNotes.indexOf(item);
+  			$scope.lowNotes.splice(index, 1); 
+		}
+		else{
+
+			console.log('Unknown priority value.');
+		}	
 
   		save();
 	};
-
-	// console.log($scope.tempNoteLow);
 
 }]);

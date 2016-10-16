@@ -96,7 +96,7 @@
 
 				<div class="note-group">
 
-					<div class="note" ng-repeat="note in notes | filter:{priority:1}">
+					<div class="note" ng-repeat="note in topNotes">
 
 						<!-- TODO -->
 						<!-- <p ng-show="notes.length < 1">No tasks. :)</p> -->
@@ -111,7 +111,7 @@
 
 						<input type="text" ng-model="$scope.tempNoteHigh.content"placeholder="Add new..." ></input>
 
-						<a href="" ng-click="add($scope.tempNoteHigh.content, 1)"><i class="fa fa-plus"></i></a>	
+						<a href="" ng-click="add($scope.tempNoteHigh.content, 1)"><i class="fa fa-plus"></i></a>
 
 					</div>
 
@@ -123,7 +123,7 @@
 
 				<div class="note-group">
 
-					<div class="note" ng-repeat="note in notes | filter:{priority:2}">
+					<div class="note" ng-repeat="note in mediumNotes">
 
 						<input type="text" ng-model="note.content"></input>
 						<a href="#" ng-click="remove(note)"><i class="fa fa-check"></i></a>	
@@ -132,7 +132,7 @@
 
 					<div class="note">
 
-						<input type="text" ng-model="$scope.tempNoteMedium.content"placeholder="Add new..." ></input>
+						<input id="tempNoteMedium" type="text" ng-model="$scope.tempNoteMedium.content" placeholder="Add new..." ></input>
 
 						<a href="" ng-click="add($scope.tempNoteMedium.content, 2)"><i class="fa fa-plus"></i></a>	
 
@@ -146,7 +146,7 @@
 
 				<div class="note-group">
 
-					<div class="note" ng-repeat="note in notes | filter:{priority:3}">
+					<div class="note" ng-repeat="note in lowNotes">
 
 						<input type="text" ng-model="note.content"></input>
 						<a ng-click="remove(note)"><i class="fa fa-check"></i></a>	
