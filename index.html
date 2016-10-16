@@ -96,7 +96,7 @@
 
 				<div class="note-group">
 
-					<div class="note" ng-repeat="note in topNotes">
+					<div class="note" ng-repeat="note in notes | filter: {'note.priority' : 1}">
 
 						<!-- TODO -->
 						<!-- <p ng-show="notes.length < 1">No tasks. :)</p> -->
@@ -109,9 +109,9 @@
 
 					<div class="note">
 
-						<input type="text" ng-model="$scope.tempNoteHigh.content"placeholder="Add new..." ></input>
+						<input type="text" ng-model="tempNoteTop.content"placeholder="Add new..." ></input>
 
-						<a href="" ng-click="add($scope.tempNoteHigh.content, 1)"><i class="fa fa-plus"></i></a>
+						<a href="" ng-click="add(tempNoteTop)"><i class="fa fa-plus"></i></a>
 
 					</div>
 
@@ -189,6 +189,9 @@
 
   	<!-- Helpers -->
   	<script type="text/javascript" src="assets/js/helpers/filters.js"></script>
+
+  	<!-- Services -->
+  	<script type="text/javascript" src="assets/js/services/notesService.js"></script>
 
 </body>
 </html>
