@@ -59,7 +59,7 @@ body{
 
 	background-color: $black;
 
-	padding-bottom: 100px;
+	// padding-bottom: 100px;
 
 	font-family: 'Open Sans', sans-serif;
 
@@ -102,7 +102,7 @@ a{
 
 	.container{
 
-		width: 810px;
+		// width: 810px;
 	}
 
 	#nav-container{
@@ -112,6 +112,8 @@ a{
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
+
+		// padding: 0px;
 	}
 
 	.navbar-brand{
@@ -140,6 +142,11 @@ a{
 
 	// All the content on the page should be pushed below the naviagation bar.
 	margin-top: $navigation-height/2;
+
+	.col-md-8, .col-md-4{
+
+		// padding: 0px;
+	}
 }
 
 // Note Content
@@ -150,21 +157,44 @@ a{
 
 	border-radius: 5px;
 
+	margin-bottom: 25px;
+
+	// min-height: 275px;
+	height: auto;
+
+	&:first-of-type{
+
+		// margin-right: 25px;
+	}
+
 	.title{
 
 		text-transform: uppercase;
 		margin-top: 0px;
 	}
 
-	a{
+	.controls-container{
 
 		position: absolute;
 		right: 15px;
 		top: 18px;
+	}
+
+	a{
+
+		display: inline-block;
 
 		color: $gray;
 		font-size: 1.5em;
 		opacity: 0.6;
+
+		&:first-of-type{
+
+			&:not(:last-of-type){
+
+				margin-right: 10px;
+			}
+		}
 
 		@include smooth-transition(0.5s);
 
@@ -202,7 +232,7 @@ a{
 
 			position: relative;			
 
-			input[type="text"]{			
+			input[type="text"], textarea{			
 
 				font-size: 1.1em;
 				margin: 0px;
@@ -214,14 +244,158 @@ a{
 
 				border: 0px;
 
+				border-radius:0px;
+
 				display: inline-block;
 
 				@extend %highlight-box;
 			// @include smooth-transition(0.5s);
-			}			
+			}
 
+			.note-container.priority{
+
+				input[type="text"]{
+
+					background-color: fade-out($primary, 0.7);
+
+					color: $white;
+					font-weight: 700;
+				}
+
+				a{
+
+					color: $white;
+				}
+
+			}
+
+			textarea{
+
+				resize: vertical;
+				min-height: 100px;
+			}
 		}
 
+		.no-tasks{
 
+			text-align: center;
+			opacity: 0.5;
+
+			height: 32px;
+
+			text-transform: uppercase;
+		}
+}
+}
+
+#notes{
+
+	// min-height:300px;
+}
+
+// Primary UI Elements
+.button{
+
+	@include smooth-transition(0.5s);
+}
+
+.button-circular{
+
+	width: 65px;
+	height: 65px;
+
+	font-size: 1.8em;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+
+	margin: 0 auto;
+	text-align: center;
+
+	border-radius: 32.5px;
+}
+
+.button-fixed{
+
+	position: fixed;
+	bottom: 50px;
+	right: 100px;
+
+	z-index: 2;
+}
+
+.button-engage{
+
+	background-color: $primary;
+	color: $white;	
+
+	&:hover{
+
+		cursor: pointer;
+		background-color: $white;
+		color: $black;		
 	}
+}
+
+a.fancy-link{
+
+	font-family: 'Open Sans', sans-serif;
+	text-transform: uppercase;
+
+	font-size: 1.0em;
+
+	color: $primary;
+
+	border-bottom: 1px solid $primary;
+
+	&:hover{
+
+		color: $black;
+		border-color: $black;
+
+		text-decoration: none;
+	}
+}
+
+// Footer Content
+footer {
+
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-end;
+
+	min-height: 150px;
+
+	.footer-content{
+
+		padding: 0px;	
+
+		p{
+			display: inline-block;
+
+			color: #bbbbbb;
+
+			a{
+
+				color: $white;
+
+				&:hover{
+
+					color: $primary;
+					text-decoration: none;
+				}
+			}
+
+			&:first-of-type{
+
+				float: left;
+			}
+
+			&:last-of-type{
+
+				float: right;
+			}
+		}
+	}	
 }

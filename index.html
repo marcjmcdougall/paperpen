@@ -88,76 +88,94 @@
 
 		<div class="row">
 
-			<div class="notes-wrapper col-md-8 col-md-offset-2">
+			<div class="col-md-8">
 
-				<h3 class="title">Top Priority</h3>				
-				<p>These tasks should be tackled as soon as possible.</p>
-				<hr class="fancy-hr">
+				<div id="tasks" class="notes-wrapper">
 
-				<div class="note-group">
+					<h3 class="title">Tasks</h3>				
+					<p>Keep track of any specific things that need done.  You can set reminders and highlight tasks as important.</p>
+					<hr class="fancy-hr">
 
-					<div class="note" ng-repeat="note in notes | filter: {priority : 1}">
+					<div class="note-group">
 
-						<!-- TODO -->
-						<!-- <p ng-show="notes.length < 1">No tasks. :)</p> -->
+						<!-- <p class="no-tasks">&mdash;&nbsp;&nbsp;No tasks&nbsp;&nbsp;&mdash;</p> -->
 
-						<input type="text" ng-model="note.content"></input>
-						<!-- <p>{{note.content}}</p> -->
-						<a href="" ng-click="remove(note)"><i class="fa fa-check"></i></a>			
+						<div class="note" ng-repeat="note in notes | orderBy: '-priority'">
 
-					</div>
+							<div class="note-container" ng-class="{ 'priority': note.priority }">
 
-					<div class="note">
+							<!-- TODO -->
+							<!-- <p ng-show="notes.length < 1">No tasks. :)</p> -->
 
-						<input type="text" ng-keydown="$event.which === 13 && add(tempNoteTop.content, 1)" ng-model="tempNoteTop.content"placeholder="Add new..." ></input>
+							<input type="text" ng-model="note.content"></input>
+							<!-- <p>{{note.content}}</p> -->
 
-						<a href="" ng-click="add(tempNoteTop.content, 1)"><i class="fa fa-plus"></i></a>
+								<div class="controls-container">
+
+									<a href="" ng-click="note.priority = !note.priority"> <i class="fa fa-exclamation"></i></a>	
+									<a href="" ng-click="remove(note)"> <i class="fa fa-check"></i></a>
+
+								</div>
+
+							</div>			
+
+						</div>
+
+						<div class="note">
+
+							<input type="text" ng-keydown="$event.which === 13 && add(tempNote.content, false)" ng-model="tempNote.content"placeholder="Add new..." ></input>
+
+							<div class="controls-container">
+
+								<a href="" ng-click="add(tempNote.content, false)"><i class="fa fa-plus"></i></a>
+
+							</div>
+
+						</div>
+
+						<a class="fancy-link" ng-show="notes.length > 0" ng-click="clear();" href=""><i class="fa fa-trash-o"></i>&nbsp;&nbsp;Clear All&hellip;</a>
 
 					</div>
 
 				</div>
 
-				<h3 class="title">Medium Priority</h3>
-				<p>These tasks should be tackled when you have time.</p>
-				<hr class="fancy-hr">
+			</div>
 
-				<div class="note-group">
+			<div class="col-md-4">
 
-					<div class="note" ng-repeat="note in notes | filter: {priority : 2}">
+				<div id="notes" class="notes-wrapper">
 
-						<input type="text" ng-model="note.content"></input>
-						<a href="" ng-click="remove(note)"><i class="fa fa-check"></i></a>	
+					<div class="note-group">
 
-					</div>
+						<h3 class="title">Notes</h3>
+						<p>Just some simple notes for the day.</p>
+						<hr class="fancy-hr">
+						
+						<div class="note">
+							
+							<textarea placeholder="The address for today's meeting is...."></textarea>
 
-					<div class="note">
-
-						<input ng-keydown="$event.which === 13 && add(tempNoteMedium.content, 2)" type="text" ng-model="tempNoteMedium.content" placeholder="Add new..." ></input>
-
-						<a href="" ng-click="add(tempNoteMedium.content, 2)"><i class="fa fa-plus"></i></a>	
+						</div>
 
 					</div>
 
 				</div>
 
-				<h3 class="title">Low Priority</h3>
-				<p>These are your stretch goals for today.</p>
-				<hr class="fancy-hr">
+				<div id="notes-archive" class="notes-wrapper">
 
-				<div class="note-group">
+					<div class="note-group">
 
-					<div class="note" ng-repeat="note in notes | filter: {priority : 3}">
+						<h3 class="title">Note Archive</h3>
+						<p>You can search through all the notes you've ever saved here.</p>
+						<hr class="fancy-hr">
+						
+						<div class="note">
+							
+							<input type="text" placeholder="Start typing to search..."></textarea>
 
-						<input type="text" ng-model="note.content"></input>
-						<a ng-click="remove(note)"><i class="fa fa-check"></i></a>	
+							<ng-repeat
 
-					</div>
-
-					<div class="note">
-
-						<input type="text" ng-keydown="$event.which === 13 && add(tempNoteLow.content, 3)" ng-model="tempNoteLow.content" placeholder="Add new..." ></input>
-
-						<a href="" ng-click="add(tempNoteLow.content, 3)"><i class="fa fa-plus"></i></a>	
+						</div>
 
 					</div>
 
@@ -167,7 +185,22 @@
 
 		</div>
 
+<!-- 		<footer class="row">
+
+			<div class="footer-content col-md-12">
+
+				<p>&copy; <script>document.write(new Date().getFullYear())</script> PaperPen, Inc.</p>
+				<p><a href="/terms">Terms</a>&nbsp;&nbsp;&nbsp;&nbsp;A tool by <a href="https://www.kilobytestudios.org" target="_blank">Kilobyte Studios</a></p>
+
+			</div>
+
+		</footer> -->
+
 	</div>
+
+	<div id="new-task" class="button button-circular button-fixed button-engage"><i class="fa fa-microphone"></i></div>
+
+	<!-- <div class="audio-prompt"><p>Listening...</p></div> -->
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="dependencies/jquery-1.11.3.min.js"></script>
